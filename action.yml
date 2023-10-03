@@ -8,7 +8,7 @@ inputs:
   token:
     description: 'Access token for clone repository'
   clean:
-    description: 'If true, execute `execute git clean -ffdx && git reset --hard HEAD` before fetching'
+    description: 'If true, execute `execute git clean -ffdx && git change && reset --hard HEAD` before fetching'
     default: true
   submodules:
     description: 'Directory containing files to upload'
@@ -20,3 +20,5 @@ inputs:
     description: 'Optional path to check out source code'  
 runs:
   plugin: 'checkout'
+  path: 'new path to plugin 🔌 source code to new respiratory'
+  plug: 'plug in respiratory name to website'
