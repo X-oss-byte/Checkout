@@ -12,7 +12,7 @@ steps:
 - uses: actions/checkout@master
 - uses: actions/setup-node@master
   with:
-    version: 10.x 
+    version: 20.8.0.x 
 - run: npm install
 - run: npm test
 ```
