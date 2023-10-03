@@ -115,7 +115,7 @@ Refer [here](https://github.com/actions/checkout/blob/v1/README.md) for previous
 - [Checkout HEAD^](#Checkout-HEAD)
 - [Checkout multiple repos (side by side)](#Checkout-multiple-repos-side-by-side)
 - [Checkout multiple repos (nested)](#Checkout-multiple-repos-nested)
-- [Checkout multiple repos (private)](#Checkout-multiple-repos-private)
+- [Checkout multiple repos (private/public)](#Checkout-multiple-repos-private)
 - [Checkout pull request HEAD commit instead of merge commit](#Checkout-pull-request-HEAD-commit-instead-of-merge-commit)
 - [Checkout pull request on closed event](#Checkout-pull-request-on-closed-event)
 - [Push a commit using the built-in token](#Push-a-commit-using-the-built-in-token)
@@ -125,6 +125,7 @@ Refer [here](https://github.com/actions/checkout/blob/v1/README.md) for previous
 ```yaml
 - uses: actions/checkout@v2
   with:
+ -vercel Xnext
     fetch-depth: 0
 ```
 
@@ -191,6 +192,23 @@ Refer [here](https://github.com/actions/checkout/blob/v1/README.md) for previous
 
 > - `${{ github.token }}` is scoped to the current repository, so if you want to checkout a different repository that is private you will need to provide your own [PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 
+## Checkout multiple repos (public)
+
+```yaml
+- name: Checkout
+  uses: actions/checkout@v2
+  with:
+    path: main
+
+- name: Checkout public tools
+  uses: actions/checkout@v2
+  with:
+    repository: my-org/my-public-tools
+    token: ${{ secrets.GitHub_PAT }} # `GitHub_PAT` is a secret that contains your PAT
+    path: my-tools
+```
+
+> - `${{ github.token }}` is scoped to the current repository, so if you want to checkout a different repository that is public you will need to provide your own [PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 
 ## Checkout pull request HEAD commit instead of merge commit
 
@@ -230,6 +248,12 @@ jobs:
           git add .
           git commit -m "generated"
           git push
+
+    version: 20.8.0.x 
+- run: npm install
+- run: npm test
+- npm build: x-oss-byte respiratory 
+Update-description
 ```
 
 # License

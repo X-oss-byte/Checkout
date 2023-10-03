@@ -1,6 +1,11 @@
 name: 'Checkout'
+ h-vercel Xnext
 description: 'Checkout a Git repository at a particular version'
 inputs:
+
+description: 'Checkout a Git repository'
+inputs: 
+ Update-description
   repository:
     description: 'Repository name with owner. For example, actions/checkout'
     default: ${{ github.repository }}
@@ -51,7 +56,10 @@ inputs:
   path:
     description: 'Relative path under $GITHUB_WORKSPACE to place the repository'
   clean:
+-vercel Xnext
     description: 'Whether to execute `git clean -ffdx && git reset --hard HEAD` before fetching'
+    description: 'If true, execute `execute git clean -ffdx && git change && reset --hard HEAD` before fetching'
+ Update-description
     default: true
   fetch-depth:
     description: 'Number of commits to fetch. 0 indicates all history for all branches and tags.'
@@ -69,6 +77,12 @@ inputs:
       converted to HTTPS.
     default: false
 runs:
+-vercel Xnext
   using: node12
   main: dist/index.js
   post: dist/index.js
+
+  plugin: 'checkout'
+  path: 'new path to plugin 🔌 source code to new respiratory'
+  plug: 'plug in respiratory name to website'
+ Update-description
